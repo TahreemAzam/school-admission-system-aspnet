@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model SchoolWebsite1.Models.Admission
+@{
+    ViewBag.Title = "Create Admission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4">Create New Admission</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label asp-for="ApplicantFullName" class="form-label"></label>
+            <input asp-for="ApplicantFullName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ApplyingForClass" class="form-label"></label>
+            <input asp-for="ApplyingForClass" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DateOfBirth" class="form-label"></label>
+            <input asp-for="DateOfBirth" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Gender" class="form-label"></label>
+            <input asp-for="Gender" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ParentGuardianName" class="form-label"></label>
+            <input asp-for="ParentGuardianName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ParentContactNumber" class="form-label"></label>
+            <input asp-for="ParentContactNumber" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" type="email" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AlternateContact" class="form-label"></label>
+            <input asp-for="AlternateContact" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label"></label>
+            <textarea asp-for="Address" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AdditionalNotes" class="form-label"></label>
+            <textarea asp-for="AdditionalNotes" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Create Admission</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+

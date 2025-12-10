@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model SchoolWebsite1.Models.Admission
+@{
+    ViewBag.Title = "Admission Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4">Admission Details</h2>
+
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+
+        <dt class="col-sm-3">Applicant Name</dt>
+        <dd class="col-sm-9">@Model.ApplicantFullName</dd>
+
+        <dt class="col-sm-3">Class</dt>
+        <dd class="col-sm-9">@Model.ApplyingForClass</dd>
+
+        <dt class="col-sm-3">DOB</dt>
+        <dd class="col-sm-9">@Model.DateOfBirth.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Gender</dt>
+        <dd class="col-sm-9">@Model.Gender</dd>
+
+        <dt class="col-sm-3">Parent/Guardian</dt>
+        <dd class="col-sm-9">@Model.ParentGuardianName</dd>
+
+        <dt class="col-sm-3">Contact</dt>
+        <dd class="col-sm-9">@Model.ParentContactNumber</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+
+        <dt class="col-sm-3">Alternate Contact</dt>
+        <dd class="col-sm-9">@Model.AlternateContact</dd>
+
+        <dt class="col-sm-3">Address</dt>
+        <dd class="col-sm-9">@Model.Address</dd>
+
+        <dt class="col-sm-3">Additional Notes</dt>
+        <dd class="col-sm-9">@Model.AdditionalNotes</dd>
+
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+
+        <dt class="col-sm-3">Submitted At</dt>
+        <dd class="col-sm-9">@Model.SubmittedAt</dd>
+    </dl>
+
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

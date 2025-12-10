@@ -1,0 +1,111 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewBag.Title = "Admission - Morning Star High School";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Admission Intro Section -->
+<section class="admission-intro py-5 text-center text-white">
+    <div class="container">
+        <h2 class="display-5 fw-bold mb-3">Admissions Open for 2025-26</h2>
+        <p class="lead mb-4">Join Morning Star High School and give your child the best opportunity to grow academically, morally, and socially. We welcome applications from students seeking quality education in a nurturing environment.</p>
+        <a href="#applyForm" class="btn btn-warning btn-lg text-dark fw-bold">Apply Online</a>
+    </div>
+</section>
+
+<!-- Admission Form Section -->
+<section class="admission-form-section py-5 reveal" id="applyForm">
+    <div class="container">
+        <h2 class="section-title text-center mb-4">Apply Online</h2>
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        <p class="text-center mb-5 text-muted">Fill out the form below to submit your application. Make sure all details are accurate.</p>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg p-4 border-0">
+                    <form method="post" asp-action="Admission" asp-controller="Home">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Applicant Full Name</label>
+                                <input class="form-control" name="ApplicantFullName" placeholder="John Doe" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Applying For Class</label>
+                                <select class="form-select" name="ApplyingForClass" required>
+                                    <option value="">Select Class</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Date of Birth</label>
+                                <input type="date" class="form-control" name="DateOfBirth" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Gender</label>
+                                <select class="form-select" name="Gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Parent/Guardian Name</label>
+                                <input class="form-control" name="ParentGuardianName" placeholder="Jane Doe" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Parent Contact Number</label>
+                                <input type="tel" class="form-control" name="ParentContactNumber" placeholder="+92 300 1234567" required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Email </label>
+                                <input type="email" class="form-control" name="Email" placeholder="example@email.com" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Alternate Contact </label>
+                                <input type="tel" class="form-control" name="AlternateContact" placeholder="+92 300 7654321" />
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold">Address</label>
+                                <textarea class="form-control" name="Address" rows="3" placeholder="House #, Street, City, Country"></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold">Additional Notes (Optional)</label>
+                                <textarea class="form-control" name="AdditionalNotes" rows="3" placeholder="Any additional information..."></textarea>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button class="btn btn-success btn-lg w-50 mt-3 fw-bold" type="submit">Submit Application</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

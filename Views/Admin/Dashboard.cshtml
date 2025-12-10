@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="text-center mt-4">Admin Dashboard</h2>
+<hr />
+
+<div class="container mt-4">
+
+    <div class="row">
+
+        <!-- Manage Admissions -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm p-3">
+                <h4>Admissions</h4>
+                <a class="btn btn-primary w-100 mb-2" href="/Admission/Index">View All Admissions</a>
+                <a class="btn btn-success w-100" href="/Admission/Create">Create New Admission</a>
+            </div>
+        </div>
+
+        <!-- Manage Notices -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm p-3">
+                <h4>Notices</h4>
+                <a class="btn btn-primary w-100 mb-2" href="/Notice/Index">View All Notices</a>
+                <a class="btn btn-success w-100" href="/Notice/Create">Create New Notice</a>
+            </div>
+        </div>
+    </div>
+
+</div>

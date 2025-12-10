@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewBag.Title = "Contact - Morning Star High School";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="contact-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Contact Us</h2>
+
+        <div class="row g-4">
+            <!-- Contact Info -->
+            <div class="col-md-5">
+                <div class="contact-info p-4 shadow-sm rounded">
+                    <h4 class="mb-3">School Location</h4>
+                    <p><strong>Morning Star High School</strong></p>
+                    <p>Mandi Usmanwala</p>
+                    <p>Phone: +92 300 1234567</p>
+                    <p>Email: info@morningstar.edu.pk</p>
+                    <a href="https://maps.app.goo.gl/dNwNVKHg9BQ6LdKr8" target="_blank" class="btn btn-map mt-3">View on Google Maps</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-md-7">
+                <div class="contact-form p-4 shadow-sm rounded">
+                    <h4 class="mb-4">Send Us a Message</h4>
+                    <form method="post" action="#">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" name="Name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="Email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" name="Phone" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" name="Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
