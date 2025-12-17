@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using SchoolWebsite.Data;
 using SchoolWebsite1.Data;
 using SchoolWebsite1.Data.Repositories;
+using SchoolWebsite1.Services;
+using SchoolWebsite1.Hubs;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +23,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 builder.Services.AddScoped<IAdmissionRepository, AdmissionRepository>();
 builder.Services.AddScoped<INoticeRepository, NoticeRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddSignalR();
+
 
 var app = builder.Build();
 
@@ -45,5 +52,11 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await SeedAdmin.InitializeAsync(services);
+}
+app.MapHub<NoticeHub>("/NoticeHub");
 
 app.Run();

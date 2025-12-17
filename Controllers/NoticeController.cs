@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolWebsite1.Data.Repositories;
 using SchoolWebsite1.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using SchoolWebsite1.Hubs;
+
 
 namespace SchoolWebsite1.Controllers
 {
@@ -10,10 +13,11 @@ namespace SchoolWebsite1.Controllers
     public class NoticeController : Controller
     {
         private readonly INoticeRepository _noticeRepository;
-
-        public NoticeController(INoticeRepository noticeRepository)
+        private readonly IHubContext<NoticeHub> _hubContext;
+        public NoticeController(INoticeRepository noticeRepository, IHubContext<NoticeHub> hubContext)
         {
             _noticeRepository = noticeRepository;
+            _hubContext = hubContext;
         }
 
         //  List all notices (Admin)
@@ -39,6 +43,8 @@ namespace SchoolWebsite1.Controllers
             model.CreatedAt = DateTime.Now;
 
             await _noticeRepository.AddAsync(model);
+            await _hubContext.Clients.All.SendAsync("NoticeAdded");
+            await _hubContext.Clients.All.SendAsync("ReceiveNotice", model.Title, model.Message, model.CreatedAt.ToString("g"));
             return RedirectToAction("Index");
         }
 

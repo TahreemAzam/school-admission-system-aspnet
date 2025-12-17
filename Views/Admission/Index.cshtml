@@ -6,6 +6,7 @@
     ViewBag.Title = "Manage Admissions";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div id="statusMessage"></div>
 
 <div class="container py-5">
     <h2 class="mb-4">All Admissions</h2>
@@ -45,8 +46,11 @@
                         <a asp-action="Details" asp-route-id="@admission.Id" class="btn btn-info btn-sm">View</a>
                         <form asp-action="UpdateStatus" method="post" class="d-inline">
                             <input type="hidden" name="id" value="@admission.Id" />
-                            <button type="submit" name="status" value="Approved" class="btn btn-success btn-sm">Approve</button>
-                            <button type="submit" name="status" value="Rejected" class="btn btn-warning btn-sm">Reject</button>
+                            @* <button class="btn btn-success btn-sm approve-btn" data-id="@item.Id">Approve</button>
+                            <button class="btn btn-danger btn-sm reject-btn" data-id="@item.Id">Reject</button> *@
+
+                            <button type="submit" name="status" value="Approved" class="btn btn-success btn-sm" data-id="@admission.Id">Approve</button>
+                            <button type="submit" name="status" value="Rejected" class="btn btn-warning btn-sm" data-id="@admission.Id">Reject</button>
                         </form>
                         <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete?');">
                             <input type="hidden" name="id" value="@admission.Id" />
@@ -57,4 +61,38 @@
             }
         </tbody>
     </table>
+    @section Scripts {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.approve-btn, .reject-btn').click(function () {
+                    var id = $(this).data('id');
+                    var status = $(this).hasClass('approve-btn') ? 'Approved' : 'Rejected';
+
+                    $.ajax({
+                        url: '@Url.Action("UpdateStatusAjax", "Admission")',
+                        type: 'POST',
+                        data: { id: id, status: status },
+                        success: function (response) {
+                            if (response.success) {
+                                $('#statusMessage').html('<div class="alert alert-success alert-dismissible fade show">' +
+                                    response.message +
+                                    '<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                                // Optionally update the status column in table
+                                $('#status-' + id).text(status);
+                            } else {
+                                $('#statusMessage').html('<div class="alert alert-danger alert-dismissible fade show">' +
+                                    response.message +
+                                    '<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                            }
+                        },
+                        error: function () {
+                            $('#statusMessage').html('<div class="alert alert-danger alert-dismissible fade show">An error occurred.</div>');
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+
 </div>

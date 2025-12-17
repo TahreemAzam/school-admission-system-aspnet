@@ -300,7 +300,9 @@ html {
    Notices Styling
    ========================= */
 .notice-section {
-    background: linear-gradient(to right, #e0f7fa, #ffffff);
+/*    background: linear-gradient(to right, #e0f7fa, #ffffff);*/
+    min-height: 100vh;
+/*      background-color: white;*/
 }
 
     .notice-section .section-title {

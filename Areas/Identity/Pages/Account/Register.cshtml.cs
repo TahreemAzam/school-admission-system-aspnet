@@ -108,6 +108,9 @@ namespace SchoolWebsite1.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            ModelState.AddModelError(string.Empty, "This registration is only for admin and is already seeded.");
+            return Page();
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)

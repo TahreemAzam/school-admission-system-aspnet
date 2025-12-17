@@ -116,19 +116,24 @@ namespace SchoolWebsite1.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    _logger.LogInformation("User logged in.");
 
-                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
 
-                    // Allow login ONLY if user is Admin
-                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+
+                    var roles = await _signInManager.UserManager.GetRolesAsync(user);
+                    if (roles.Contains("Admin"))
                     {
-                        return LocalRedirect("/Admin/Dashboard");
+                        return LocalRedirect("/Admin/Dashboard"); // Redirect admin to dashboard
+                    }
+                    else
+                    {
+                        await _signInManager.SignOutAsync();
+                        ModelState.AddModelError(string.Empty, "This login is only for admin, not for users.");
+                        return Page();
                     }
 
-                    // All other users -> deny login
-                    await _signInManager.SignOutAsync();
-                    ModelState.AddModelError(string.Empty, "This login is only for admin, not for users.");
-                    return Page();
+                 
                 }
                 if (result.RequiresTwoFactor)
                 {

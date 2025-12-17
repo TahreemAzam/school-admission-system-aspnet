@@ -1,0 +1,38 @@
+﻿@* -@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@* @model IEnumerable<SchoolWebsite1.Models.Notice>
+<div class="alert alert-info">
+    <strong>Admin Panel:</strong> Manage Notice Here . 
+</div>
+
+<div id="noticeContainer">
+    @foreach (var notice in Model)
+    {
+        <div class="alert alert-info mb-2">
+            <h5>@notice.Title</h5>
+            <p>@notice.Message</p>
+            <small>@notice.CreatedAt</small>
+        </div>
+    }
+</div> *@
+
+@model SchoolWebsite1.Models.Notice
+
+<div class="notice-card shadow-sm p-4 mb-3" style="background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%); border-left:5px solid green; border-radius:10px; transition: transform 0.2s;">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong class="notice-title" style="font-size:1.1rem; color:green;">@Model.Title</strong>
+        <span class="notice-date" style="font-size:0.85rem; color:#6c757d;">@Model.CreatedAt.ToString("MMM dd, yyyy")</span>
+    </div>
+    <p style="color:#495057;">@Model.Message</p>
+</div>
+
+
+<style>
+    .notice-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+</style>
+
+

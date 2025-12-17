@@ -1,5 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<SchoolWebsite1.Models.Notice>
+
+<h2>Notices</h2>
+
+@* <div id="noticeArea">
+    @foreach (var notice in Model)
+    {
+        @await Html.PartialAsync("_NoticeInfo", notice)
+    }
+</div> *@
+<div id="noticeArea">
+    @foreach (var notice in Model)
+    {
+        <div class="notice-item">
+            @await Html.PartialAsync("_NoticeInfo", notice)
+
+            <!-- Delete button -->
+            <form asp-action="Delete" asp-controller="Notice" method="post"
+                  onsubmit="return confirm('Are you sure you want to delete this notice?');"
+                  class="mt-2">
+                <input type="hidden" name="id" value="@notice.Id" />
+                <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
+            </form>
+        </div>
+    }
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/noticeHub")
+        .build();
+
+    connection.start();
+
+    connection.on("NoticeAdded", function () {
+        location.reload(); // simple way to show newly added notices
+    });
+</script>
