@@ -1,0 +1,403 @@
+/* =========================
+   Global Styles
+   ========================= */
+:root {
+    --ms-green: #008037;
+    --ms-yellow: #FFD700;
+    --ms-dark: #1e1e1e;
+    --ms-light: #f9f9f9;
+    --ms-white: #ffffff;
+    --ms-gray: #6c757d;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--ms-light);
+    color: var(--ms-dark);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--ms-green);
+}
+
+p {
+    color: #333;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+.ms-navbar {
+    background-color: var(--ms-green);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+    .ms-navbar .nav-link {
+        color: var(--ms-white) !important;
+        font-weight: 500;
+        margin-left: 15px;
+        transition: var(--transition);
+    }
+
+        .ms-navbar .nav-link:hover {
+            color: var(--ms-yellow) !important;
+        }
+
+    .ms-navbar .navbar-brand {
+        color: var(--ms-white);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+.ms-logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* =========================
+   Carousel
+   ========================= */
+.carousel-item img {
+    /*    height: 480px;
+    object-fit: contain;
+    width: 100%;*/
+    height: 480px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 15px 20px;
+}
+
+    .carousel-caption h2 {
+        color: var(--ms-yellow);
+        font-weight: 700;
+    }
+
+    .carousel-caption p {
+        color: var(--ms-white);
+    }
+
+/* =========================
+   Sections
+   ========================= */
+section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.bg-light {
+    background-color: #f6f7f8 !important;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* =========================
+   About Section
+   ========================= */
+section h3 {
+    color: var(--ms-green);
+}
+
+section h5 {
+    color: var(--ms-green);
+}
+
+/* =========================
+   Principal Section
+   ========================= */
+blockquote {
+    font-style: italic;
+    color: #444;
+    border-left: 5px solid var(--ms-green);
+    padding-left: 15px;
+}
+
+blockquote-footer {
+    font-size: 0.9rem;
+    color: var(--ms-gray);
+}
+
+/* =========================
+   Footer
+   ========================= */
+.ms-footer {
+    background-color: var(--ms-green);
+    color: var(--ms-white);
+    font-size: 0.9rem;
+}
+
+    .ms-footer a {
+        color: var(--ms-yellow);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+        .ms-footer a:hover {
+            text-decoration: underline;
+        }
+
+    .ms-footer h5,
+    .ms-footer h6 {
+        color: var(--ms-yellow);
+    }
+
+    .ms-footer ul {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .ms-footer .border-top {
+        border-top: 1px solid rgba(255,255,255,0.3) !important;
+    }
+
+/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 767px) {
+    .carousel-item img {
+        height: 320px;
+    }
+
+    section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+/* ===== Custom Footer Styling ===== */
+.footer-custom {
+    background: linear-gradient(135deg, #004aad, #1b6dc1);
+    color: white;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+}
+
+    .footer-custom p {
+        margin: 0;
+        transition: color 0.3s ease;
+    }
+
+        .footer-custom p:hover {
+            color: #ffdd57;
+        }
+
+    .footer-custom strong {
+        color: #ffdd57;
+    }
+/* ===== Header / Navbar Styling ===== */
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #ffffff !important;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.logo-img {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.school-name {
+    color: green;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.admission-intro {
+    background: linear-gradient(135deg, #008037, #00b373);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+    .admission-intro h2 {
+        color: #FFD700;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .admission-intro p {
+        font-size: 1.1rem;
+    }
+
+    .admission-intro .btn {
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+        .admission-intro .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+/* Admission Form Section */
+.admission-form-section {
+    background: linear-gradient(145deg, #f9f9f9, #e6f2ea);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.section-title {
+    color: #008037;
+    font-weight: 700;
+}
+
+.form-label {
+    color: #1e1e1e;
+}
+
+.btn-success {
+    background-color: #008037;
+    color: #fff;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+    .btn-success:hover {
+        background-color: #005e28;
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+/* Reveal animation */
+.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
+/* =========================
+   Notices Styling
+   ========================= */
+.notice-section {
+/*    background: linear-gradient(to right, #e0f7fa, #ffffff);*/
+    min-height: 100vh;
+/*      background-color: white;*/
+}
+
+    .notice-section .section-title {
+        color: #008037;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.notice-card {
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #ffffff, #f1f8e9);
+    border-left: 6px solid #008037;
+}
+
+    .notice-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+.notice-title {
+    font-size: 1.1rem;
+    color: #005c30;
+}
+
+.notice-date {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.notice-card p {
+    color: #333;
+    margin-bottom: 0;
+}
+/* =========================
+       Contact Page Styling
+       ========================= */
+.contact-section {
+    background: linear-gradient(to right, #fff9e6, #e6f7ff);
+}
+
+    .contact-section .section-title {
+        color: #008037;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.contact-info, .contact-form {
+    background: linear-gradient(135deg, #ffffff, #f0f8ff);
+    border-left: 6px solid #008037;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .contact-info:hover, .contact-form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .contact-info h4, .contact-form h4 {
+        color: #005c30;
+        font-weight: 600;
+    }
+
+    .contact-info p {
+        color: #333;
+    }
+
+.btn-map {
+    background-color: #008037;
+    color: #fff;
+    border-radius: 50px;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .btn-map:hover {
+        background-color: #005c30;
+        color: #fff;
+    }
+
+.btn-submit {
+    background-color: #008037;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+    .btn-submit:hover {
+        background-color: #005c30;
+        color: #fff;
+    }
